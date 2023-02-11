@@ -1,0 +1,65 @@
+﻿@model AuthMasterEv.Models.ViewModel.CustomerVM
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Customer</h4>
+
+<form asp-action="Edit" enctype="multipart/form-data" method="post">
+    <div class="row">
+        <div class="col-6">
+            <input type="hidden" asp-for="Picture" />
+            <input type="hidden" asp-for="CustomerId" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CustomerName" class="control-label"></label>
+                <input asp-for="CustomerName" class="form-control" />
+                <span asp-validation-for="CustomerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BuyingDate" class="control-label"></label>
+                <input asp-for="BuyingDate" class="form-control" type="date" />
+                <span asp-validation-for="BuyingDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PictureFile" class="control-label"></label>
+                <input asp-for="PictureFile" class="form-control" />
+                <span asp-validation-for="PictureFile" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="MaritialStatus" /> @Html.DisplayNameFor(model => model.MaritialStatus)
+                </label>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="d-flex justify-content-end">
+                <a class="btn btn-primary text-white" id="btnPlus">Add More</a>
+            </div>
+            <div id="bookContainer">
+                @foreach (var book in Model.BookList)
+                {
+                    <script>
+                        LoadBook(@book);
+                    </script>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Update" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -1,0 +1,20 @@
+﻿@model AuthMasterEv.Models.Book
+
+<div class="row form-group mt-2">
+    <div class="col-md-6">
+        @Html.DropDownListFor(x=>x.BookId, ViewBag.Books as SelectList,"--Select--",htmlAttributes:new{@class="form-control"})
+    </div>
+    <div class="col-md-2">
+        <a class="btn btn-danger text-white" id="btnDeleteBook">Delete</a>
+    </div>
+</div>
+
+<div class="row form-group mt-2">
+    <div class="col-md-4">
+        @Html.DropDownListFor(x=>x.BookId, ViewBag.Prices as SelectList,"--Select--",htmlAttributes:new{@class="form-control"})
+    </div>
+    <div class="col-md-2">
+        <a class="btn btn-danger text-white" id="btnDeletePrice">Delete</a>
+    </div>
+</div>
+

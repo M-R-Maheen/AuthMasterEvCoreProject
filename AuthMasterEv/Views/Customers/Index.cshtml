@@ -1,0 +1,60 @@
+﻿@model IEnumerable<AuthMasterEv.Models.Customer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+@foreach (var item in Model)
+{
+    <div class="card">
+        <div class="card-header d-flex justify-content-between">
+            <div>
+
+                <img src="@item.Picture" width="100" class="mr-2 rounded-circle img-thumbnail" />
+                <div>
+                    Name: @item.CustomerName
+                </div>
+                <div>
+                    Date: @item.BuyingDate.ToString("yyyy-MM-dd")
+                </div>
+                <div>
+                    Phone: @item.Phone
+                </div>
+            </div>
+
+
+
+            <div>
+
+                <a class="btn btn-primary btn-sm" asp-action="Edit" asp-controller="Customers" asp-route-id="@item.CustomerId">Edit</a>
+                <a class="btn btn-danger btn-sm" asp-action="Delete" asp-controller="Customers" asp-route-id="@item.CustomerId">Delete</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th>BookID</th>
+                        <th>BookName</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var singleEntry in item.BookEntries)
+                    {
+                        <tr>
+                            <td>@singleEntry.BookId</td>
+                            <td>@singleEntry.Book.BookName</td>
+                            <td>@singleEntry.Book.Price</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
